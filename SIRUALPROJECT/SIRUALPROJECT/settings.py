@@ -38,7 +38,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = { 'default': 
+                         { 'toolbar': 'Custom', 'height': 500, 'toolbar_Custom': 
+                             [ 
+                                 ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'], 
+                                 ['Link', 'Unlink', 'Anchor'], 
+                                 ['Image', 'Flash', 'Table', 'HorizontalRule'], 
+                                 ['TextColor', 'BGColor'], 
+                                 ['Smiley', 'SpecialChar'], 
+                                 ['Source'], 
+                             ], 
+                           },'special': { 'toolbar': 'Special', 
+             'toolbar_Special': 
+                [ 
+                    ['Bold'], 
+                    ['CodeSnippet', 'Youtube'], 
+                ], 'extraPlugins': ','.join(['codesnippet', 
+                                             'youtube']), }
+                     }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,6 +143,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = 'media/'
+
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'static'),
 ]
